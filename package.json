@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack",
-    "serve": "php -S 0.0.0.0:8000 -t public/"
+    "webpack": "webpack --watch",
+    "gulp": "gulp watch",
+    "serve": "php -S 0.0.0.0:8000 -t public/",
+    "dev": "run-p webpack gulp serve",
+    "heroku-postbuild": "gulp build && webpack"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,7 @@
     "gulp-imagemin": "^4.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
+    "npm-run-all": "^4.1.2",
     "webpack": "^3.8.1"
   },
   "dependencies": {

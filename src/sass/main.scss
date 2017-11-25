@@ -34,6 +34,12 @@ ul{
   list-style: none;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+
 @media screen and (max-width: 980px) {
     html,body {
         font-size: 30px;

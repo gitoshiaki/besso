@@ -96,6 +96,10 @@ html, body {
 ul {
   list-style: none; }
 
+a {
+  text-decoration: none;
+  color: inherit; }
+
 @media screen and (max-width: 980px) {
   html, body {
     font-size: 30px; } }
@@ -169,44 +173,44 @@ circle {
 circle:nth-child(1) {
   -webkit-animation-duration: 400s;
           animation-duration: 400s;
-  -webkit-animation-delay: -596s;
-          animation-delay: -596s; }
+  -webkit-animation-delay: -279s;
+          animation-delay: -279s; }
 
 circle:nth-child(2) {
   -webkit-animation-duration: 400s;
           animation-duration: 400s;
-  -webkit-animation-delay: -93s;
-          animation-delay: -93s; }
+  -webkit-animation-delay: -200s;
+          animation-delay: -200s; }
 
 circle:nth-child(3) {
   -webkit-animation-duration: 400s;
           animation-duration: 400s;
-  -webkit-animation-delay: -604s;
-          animation-delay: -604s; }
+  -webkit-animation-delay: -320s;
+          animation-delay: -320s; }
 
 circle:nth-child(4) {
   -webkit-animation-duration: 400s;
           animation-duration: 400s;
-  -webkit-animation-delay: -1s;
-          animation-delay: -1s; }
+  -webkit-animation-delay: -527s;
+          animation-delay: -527s; }
 
 circle:nth-child(5) {
   -webkit-animation-duration: 400s;
           animation-duration: 400s;
-  -webkit-animation-delay: -311s;
-          animation-delay: -311s; }
+  -webkit-animation-delay: -657s;
+          animation-delay: -657s; }
 
 circle:nth-child(6) {
   -webkit-animation-duration: 400s;
           animation-duration: 400s;
-  -webkit-animation-delay: -50s;
-          animation-delay: -50s; }
+  -webkit-animation-delay: -219s;
+          animation-delay: -219s; }
 
 circle:nth-child(7) {
   -webkit-animation-duration: 400s;
           animation-duration: 400s;
-  -webkit-animation-delay: -44s;
-          animation-delay: -44s; }
+  -webkit-animation-delay: -340s;
+          animation-delay: -340s; }
 
 @-webkit-keyframes hoveringBubbles {
   0% {
@@ -355,7 +359,7 @@ circle:nth-child(7) {
     top: 0;
     width: 10px;
     height: 100%;
-    background: #75394d; }
+    background: #57734a; }
   .feed__item:nth-child(4):after {
     content: "";
     display: block;
@@ -364,7 +368,7 @@ circle:nth-child(7) {
     top: 0;
     width: 10px;
     height: 100%;
-    background: #75394d; }
+    background: #eacdcd; }
   .feed__item:nth-child(5):after {
     content: "";
     display: block;
@@ -373,7 +377,7 @@ circle:nth-child(7) {
     top: 0;
     width: 10px;
     height: 100%;
-    background: #402e2b; }
+    background: #57734a; }
   .feed__item .feed__img {
     height: inherit;
     width: 130px;

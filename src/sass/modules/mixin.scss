@@ -27,3 +27,11 @@
   background-position: center;
   background-size: cover;
 }
+
+@mixin clearfix(){
+  &:after{
+    content: "";
+    clear: both;
+    display: block;
+  }
+}

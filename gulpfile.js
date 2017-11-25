@@ -5,12 +5,15 @@ var plumber = require("gulp-plumber");
 var changed  = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
 
-var paths = {};
+var paths = {
+  srcCss: "./src/sass/main.scss",
+  pubCss: "./public/css",
+  srcImage: "./src/images/*",
+  pubImage: "./public/images",
+};
 
 gulp.task("sass", function() {
-    paths.srcCss = "./src/sass/main.scss";
-    paths.pubCss = "./public/css";
-    gulp.src( paths.srcImage )
+    gulp.src( paths.srcCss )
         .pipe(plumber())
         .pipe(sass())
         .pipe(autoprefixer())
@@ -18,8 +21,6 @@ gulp.task("sass", function() {
 });
 
 gulp.task('imagemin', function(){
-    paths.srcImage = "./src/images/*";
-    paths.pubImage = "./public/images";
     gulp.src( paths.srcImage )
     .pipe(changed( paths.pubImage ))
     .pipe(imagemin([
@@ -41,4 +42,8 @@ gulp.task('watch', function(){
   gulp.watch( paths.srcImage ,['imagemin']);
 });
 
+// 開発中に使用するビルド環境
 gulp.task('default', ['watch']);
+
+// 本番環境で実行するビルド
+gulp.task('build', ['imagemin','sass']);
