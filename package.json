@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch",
-    "gulp": "gulp watch",
+    "watch:webpack": "webpack --watch",
+    "watch:gulp": "gulp watch",
     "serve": "php -S 0.0.0.0:8000 -t public/",
-    "dev": "run-p webpack gulp serve",
-    "heroku-postbuild": "gulp build && webpack"
+    "dev": "run-p serve watch:*",
+    "build": "gulp build && webpack",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
