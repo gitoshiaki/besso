@@ -65,12 +65,20 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var $ = __webpack_require__(1)
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scrollAnimation__ = __webpack_require__(2);
+var $ = __webpack_require__(1);
+
+
+window.jQuery = window.$ = $;
 
 // $('#hero_svg').attr('width', $(window).width() );
 // $('#hero_svg').attr('height', $(window).height() );
+
+Object(__WEBPACK_IMPORTED_MODULE_0__scrollAnimation__["a" /* default */])("about", 1);
 
 
 /***/ }),
@@ -10331,6 +10339,46 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = scrollAnimation;
+// スクロールイベントにより発火するアニメーション
+function scrollAnimation(targetClassName, rateOfBorder) {
+
+  //起動時に発火
+  measureToAction();
+
+  //スクロールイベントでも発火
+  $(window).scroll(function(){
+    measureToAction();
+  });
+
+  //メイン処理
+  function measureToAction(){
+    // ループ処理
+    $('.'+ targetClassName).each(function(){
+      var targetPos = $(this).offset().top; // ターゲット要素の位置（上端）
+      var scroll = $(window).scrollTop(); // 画面の位置（上端）
+      var windowHeight = $(window).height(); // 画面の高さ
+      if (scroll > targetPos - windowHeight*rateOfBorder){
+        // スルクロールにより発火する処理
+        if (!$(this).hasClass('scrolled')) {
+          $(this).addClass('scrolled');
+        }
+      }else {
+        if ($(this).hasClass('scrolled')) {
+          $(this).removeClass('scrolled');
+        }
+      }
+    });
+  }//measureToAction
+
+}//end
 
 
 /***/ })

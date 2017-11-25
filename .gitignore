@@ -2,3 +2,5 @@ node_modules
 /vendor/
 php-getting-started/
 npm-debug.log
+/public/css/
+/public/js/
