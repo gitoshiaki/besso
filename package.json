@@ -8,7 +8,7 @@
     "watch:webpack": "webpack --watch",
     "watch:gulp": "gulp watch",
     "serve": "php -S 0.0.0.0:8000 -t public/",
-    "dev": "run-p serve watch:*",
+    "dev": "run-p watch:*",
     "build": "gulp build && webpack",
     "postinstall": "npm run build"
   },

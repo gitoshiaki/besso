@@ -6,8 +6,8 @@ var changed  = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
 
 var paths = {
-  srcCss: "./src/sass/main.scss",
-  pubCss: "./public/css",
+  srcCss: "./src/sass/style.scss",
+  pubCss: "./",
   srcImage: "./src/images/*",
   pubImage: "./public/images",
 };
@@ -38,7 +38,7 @@ gulp.task('imagemin', function(){
 });
 
 gulp.task('watch', function(){
-  gulp.watch( paths.srcCss ,['sass']);
+  gulp.watch( [paths.srcCss,'./src/sass/**/*.scss'] ,['sass']);
   gulp.watch( paths.srcImage ,['imagemin']);
 });
 
