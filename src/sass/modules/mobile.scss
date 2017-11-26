@@ -1,0 +1,30 @@
+@media screen and (max-width: 900px) and (min-width: 700px) {
+
+    html,body {
+        font-size: 15px;
+    }
+    .about{
+      width: 600px;
+    }
+    .about__title{
+      line-height: 600px;
+    }
+    .feed__container{
+      width: 600px;
+    }
+}
+
+@media screen and (max-width: 699px) {
+    html,body {
+        font-size: 15px;
+    }
+    .about{
+      width: 400px;
+    }
+    .about__title{
+      line-height: 400px;
+    }
+    .feed__container{
+      width: 400px;
+    }
+}
