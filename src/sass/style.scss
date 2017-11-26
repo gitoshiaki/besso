@@ -1,0 +1,373 @@
+@charset "UTF-8";
+@import "modules/wp-theme";
+@import "modules/reset";
+@import "modules/mixin";
+
+///////////////////////////////////////////
+////  変数
+///////////////////////////////////////////
+
+$poor_pink: rgba(234, 205, 205, 1);
+$deep_pink: rgba(117, 57, 77, 1);
+$deep_beige: rgba(64, 46, 43, 1);
+$green: rgba(87, 115, 74, 1);
+$yellow: rgba(191, 191, 86, 1);
+
+$colors: $poor_pink, $deep_pink, $deep_beige, $green, $yellow;
+
+$imagePath: './public/images/';
+
+
+///////////////////////////////////////////
+////  初期設定
+///////////////////////////////////////////
+
+.wf-hannari { font-family: "Hannari"; }
+
+html,body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  // font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-family: serif;
+  perspective: 500px;
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+
+@media screen and (max-width: 980px) {
+    html,body {
+        font-size: 30px;
+    }
+}
+
+///////////////////////////////////////////
+////  共通パーツ
+///////////////////////////////////////////
+
+*[class$='__title--italic'] {
+    font-size: 2.5rem;
+    font-style: italic;
+    text-align: center;
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
+    margin: 4rem 0;
+}
+
+///////////////////////////////////////////
+////  背景
+///////////////////////////////////////////
+
+body{
+  @include centeredBg('#{$imagePath}bg.png')
+  background-attachment: fixed;
+}
+
+///////////////////////////////////////////
+////  ヒーローヘッダー
+///////////////////////////////////////////
+
+.hero__textbox{
+  display: flex;
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+  justify-content: center;
+  flex-direction: column;
+  top: 50vh;
+  transform: translateY(-50%);
+  color: white;
+  text-shadow: -1px 0px 6px rgba(0,0,0,0.3);
+}
+
+.hero__title{
+  @include verticalText();
+  font-size: 4.5rem;
+  line-height: 100vw;
+}
+
+.hero__subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 3.5rem;
+}
+
+.hero__container{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  @include centeredBg('#{$imagePath}top_visual.png')
+}
+
+
+///////////////////////////////////////////
+////  ヒーローヘッダーアニメーション
+///////////////////////////////////////////
+
+circle{
+  fill: white;
+  stroke: white;
+  stroke-width: 2px;
+  mix-blend-mode: overlay;
+  animation: hoveringBubbles linear infinite alternate;
+
+  &:nth-child(odd){
+    fill: none;
+  }
+}
+
+@for $i from 1 through 7 {
+  circle:nth-child(#{$i}) {
+    animation-duration: 200s;
+    animation-delay: -#{random(400)}s;
+  }
+}
+
+@keyframes hoveringBubbles {
+  0%{
+    transform: translate(0px,70px);
+    opacity: 1;
+    r: 40;
+  }
+  25%{
+    transform: translate(250px,0px);
+    opacity: .7;
+    r: 20;
+  }
+  50%{
+    transform: translate(500px,100px);
+    opacity: .5;
+    r: 70;
+  }
+  75%{
+    transform: translate(750px,30px);
+    opacity: .7;
+    r:30;
+  }
+  100%{
+    transform: translate(1000px,70px);
+    opacity: 1;
+    r: 50;
+  }
+}
+
+///////////////////////////////////////////
+////  About
+///////////////////////////////////////////
+
+.about {
+    display: block;
+    position: relative;
+    width: 800px;
+    height: auto;
+    padding: 100px 0 70px;
+    background: url(#{$imagePath}about_bg.png);
+    top: -10vh;
+    margin: 0 auto;
+    transition: cubic-bezier(0.26, 0.49, 0.44, 1.01) 1.5s;
+    transform: rotateX(-30deg) translate3D(0px, -100px, 700px);
+    opacity: 0;
+    transform-origin: top;
+
+    &.scrolled{
+      transform: rotateX(0deg) translate3D(0px, 0px, 0px);
+      opacity: 1;
+    }
+
+    &:after{
+      content:"";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: inherit;
+      height: 10px;
+      background: linear-gradient(
+      90deg,
+        $green 0%,
+        $green 25%,
+        $poor_pink 25%,
+        $poor_pink 50%,
+        $deep_pink 50%,
+        $deep_pink 75%,
+        $deep_beige 75%,
+        $deep_beige 100%
+      );
+    }
+
+}
+
+.about__title{
+  @include verticalText();
+  position: relative;
+  line-height: 800px;
+  padding: 0 0 50px;
+  z-index: 1;
+
+  &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -30px;
+      left: 350px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      background: #eacdcd;
+      z-index: -1;
+  }
+}
+
+.about__description{
+  width: 66.6666% ;
+  line-height: 2rem;
+  margin: 0 auto;
+}
+
+///////////////////////////////////////////
+////  news
+///////////////////////////////////////////
+
+.news__container{
+  position: relative;
+  padding: 5rem 0;
+  @include centeredBg("#{$imagePath}flower.JPG");
+  background-attachment: fixed;
+  z-index: 0;
+
+  // &:before {
+  //   content: "";
+  //   display: block;
+  //   position: absolute;
+  //   background: linear-gradient(45deg, rgba(117, 57, 77, 1) 0%, rgba(0, 0, 0, 0.61) 100%);
+  //   width: 100%;
+  //   height: 100%;
+  //   top: 0;
+  //   z-index: -1;
+  // }
+}
+
+.feed__container{
+  width: 800px;
+  margin: 0 auto;
+}
+
+$padding1: 10px;
+
+.feed__item{
+  display: flex;
+  position: relative;
+  height: auto;
+  width: inherit;
+  background: white;
+  padding-left: $padding1;
+  transition: ease 1s;
+  transform: translateY(50px);
+  opacity: 0;
+
+  &.scrolled{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  &+.feed__item{
+    margin-top: 1.5rem;
+  }
+
+  @for $i from 1 through 5 {
+      &:nth-child(#{$i}):after{
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $padding1;
+        height: 100%;
+        background: nth( $colors, random(5));
+      }
+  }
+
+  .feed__img{
+    height: inherit;
+    width: 130px;
+    @include centeredBg("#{$imagePath}top_visual.png");
+  }
+
+  .feed__textarea {
+    padding: 2rem 2rem;
+
+    .feed__title {
+      line-height: 2.5;
+    }
+
+    .feed__text {
+      line-height: 1.5;
+      font-size: .7rem;
+    }
+
+  }
+
+}
+
+.button__container{
+  text-align: center;
+
+  .button{
+    @include button();
+  }
+}
+
+///////////////////////////////////////////
+////  contact
+///////////////////////////////////////////
+
+.contact__body{
+  display: flex;
+  line-height: 10vh;
+  text-align: center;
+  flex-direction: row;
+}
+
+.body__email{
+  width: 70vw;
+  background: $deep_pink;
+  color: $poor_pink;
+  @include pushableInteraction();
+  font-family: sans-serif;
+  letter-spacing: .1em;
+}
+
+.body__facebook{
+  width: 30vw;
+  background: $poor_pink;
+  color: $deep_pink;
+  @include pushableInteraction();
+}
+
+///////////////////////////////////////////
+////  footer
+///////////////////////////////////////////
+
+footer{
+  display: block;
+  line-height: 10vh;
+  background: $deep_beige;
+  text-align: center;
+
+  p{
+    color: #ffffff3d;
+    line-height: inherit;
+    font-family: sans-serif;
+    font-size: .5rem;
+    font-weight: 100;
+  }
+}
