@@ -7,3 +7,4 @@ window.jQuery = window.$ = $;
 // $('#hero_svg').attr('height', $(window).height() );
 
 scrollAnimation("about", 1);
+scrollAnimation("feed__item", .8);

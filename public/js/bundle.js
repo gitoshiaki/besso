@@ -79,6 +79,7 @@ window.jQuery = window.$ = $;
 // $('#hero_svg').attr('height', $(window).height() );
 
 Object(__WEBPACK_IMPORTED_MODULE_0__scrollAnimation__["a" /* default */])("about", 1);
+Object(__WEBPACK_IMPORTED_MODULE_0__scrollAnimation__["a" /* default */])("feed__item", .8);
 
 
 /***/ }),

@@ -11,6 +11,9 @@
       <link rel="profile" href="http://gmpg.org/xfn/11" />
       <meta name="viewport" content="width=500,initial-scale=1">
       <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
+      <?php if ( !is_front_page() && !is_home() ) : ?>
+      <link rel="stylesheet" href="<?= publicPath('css/article.css'); ?>">
+      <?php endif; ?>
       <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
       <link href="https://fonts.googleapis.com/css?family=Roboto:100i" rel="stylesheet">
       <!-- <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet" /> -->
@@ -18,3 +21,6 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <?php wp_head(); ?>
   </head>
+    <body>
+      <header>
+      </header>

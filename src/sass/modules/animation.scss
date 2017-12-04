@@ -1,0 +1,50 @@
+///////////////////////////////////////////
+////  ヒーローヘッダーアニメーション
+///////////////////////////////////////////
+
+.a-hero__circle{
+  fill: white;
+  stroke: white;
+  stroke-width: 2px;
+  mix-blend-mode: overlay;
+  animation: hoveringBubbles linear infinite alternate;
+
+  &:nth-child(odd){
+    fill: none;
+  }
+}
+
+@for $i from 1 through 7 {
+  .a-hero__circle:nth-child(#{$i}) {
+    animation-duration: 200s;
+    animation-delay: -#{random(400)}s;
+  }
+}
+
+@keyframes hoveringBubbles {
+  0%{
+    transform: translate(0px,70px);
+    opacity: 1;
+    r: 40;
+  }
+  25%{
+    transform: translate(250px,0px);
+    opacity: .7;
+    r: 20;
+  }
+  50%{
+    transform: translate(500px,100px);
+    opacity: .5;
+    r: 70;
+  }
+  75%{
+    transform: translate(750px,30px);
+    opacity: .7;
+    r:30;
+  }
+  100%{
+    transform: translate(1000px,70px);
+    opacity: 1;
+    r: 50;
+  }
+}

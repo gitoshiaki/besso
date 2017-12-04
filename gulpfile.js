@@ -7,7 +7,9 @@ var imagemin = require('gulp-imagemin');
 
 var paths = {
   srcCss: "./src/sass/style.scss",
+  srcCssArticle: "./src/sass/article.scss",
   pubCss: "./",
+  pubCssArticle: "./public/css",
   srcImage: "./src/images/*",
   pubImage: "./public/images",
 };
@@ -18,6 +20,12 @@ gulp.task("sass", function() {
         .pipe(sass())
         .pipe(autoprefixer())
         .pipe(gulp.dest( paths.pubCss ));
+
+    gulp.src( paths.srcCssArticle )
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(autoprefixer())
+        .pipe(gulp.dest( paths.pubCssArticle ));
 });
 
 gulp.task('imagemin', function(){
@@ -38,7 +46,7 @@ gulp.task('imagemin', function(){
 });
 
 gulp.task('watch', function(){
-  gulp.watch( [paths.srcCss,'./src/sass/**/*.scss'] ,['sass']);
+  gulp.watch( ['./src/sass/*.scss','./src/sass/**/*.scss'] ,['sass']);
   gulp.watch( paths.srcImage ,['imagemin']);
 });
 

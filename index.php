@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <title>HOME｜瞥荘</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100i" rel="stylesheet">
-    <!-- <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet" /> -->
-    <link rel="stylesheet" href="./css/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  </head>
-  <body>
-    <header>
-
-    </header>
+<?php get_header(); ?>
     <main>
 
       <div class="hero">
@@ -22,7 +9,7 @@
         <div class="hero__container">
           <svg id="hero_svg" width="100%" height="100%" viewBox="0 0 1000 800">
             <?php for ($i=0; $i < $limit = 7 ; $i++): ?>
-              <circle cx="0" cy="<?= 800/$limit*$i ?>"/>
+              <circle class="a-hero__circle" cx="0" cy="<?= 800/$limit*$i ?>"/>
             <?php endfor; ?>
           </svg>
         </div>
@@ -37,30 +24,34 @@
           </p>
       </div>
 
-      <div class="gallary">
-        <h2 class="gallary__title--italic">Gallary</h2>
-        <svg>
-          <line></line>
-
-        </svg>
-      </div>
-
       <div class="news">
         <h2 class="news__title--italic">News</h2>
         <div class="news__container">
           <ul class="feed__container">
-            <?php for ($i=0; $i < 3 ; $i++): ?>
+
+            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
               <li class="feed__item">
-                <div class="feed__img"></div>
+                <div class="feed__img eyecatch">
+                  <?php
+                    if ( has_post_thumbnail() ) {
+                		    the_post_thumbnail();
+                		}else {
+                		    echo '<img src="' . get_bloginfo( 'stylesheet_directory' ) . '/images/thumbnail-default.jpg" />';
+                		}
+                   ?>
+                </div>
                 <div class="feed__textarea">
-                  <h3 class="feed__title">11月20日 お茶会開催のお知らせ</h3>
-                  <p class="feed__text">
-                    以下のリンクにて詳細をご確認ください。<br>
-                    http://facebook.com/event/1kfhdikdn
-                  </p>
+                  <h3 class="feed__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                  <div class="feed__text">
+                    <?php the_content(); ?>
+                  </div>
                 </div>
               </li>
-            <?php endfor; ?>
+
+            <?php endwhile; else : ?>
+            	<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+            <?php endif; ?>
 
           </ul>
           <div class="button__container">
@@ -69,18 +60,13 @@
         </div>
       </div>
 
-      <div class="contact">
-        <h2 class="contact__title--italic">Contact</h2>
-        <div class="">
+      <!-- <div class="gallary">
+        <h2 class="gallary__title--italic">Gallary</h2>
+        <svg>
+          <line></line>
 
-        </div>
-      </div>
+        </svg>
+      </div> -->
 
     </main>
-    <footer>
-
-    </footer>
-
-    <script src="./js/bundle.js" charset="utf-8"></script>
-  </body>
-</html>
+<?php get_footer(); ?>
